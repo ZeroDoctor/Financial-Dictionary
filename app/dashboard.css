@@ -1,0 +1,129 @@
+/*
+  Color Scheme:
+  #D96A7E
+  #504F59
+  #A7C1D9
+  #D9C1B4
+  #F27166
+*/
+
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+}
+
+/*
+ * Typography
+ */
+h1 {
+  margin-bottom: 20px;
+  padding-bottom: 9px;
+}
+
+/* Gradient transparent - color - transparent */
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(21, 49, 66, 0), rgba(21, 49, 66, 0.75), rgba(21, 49, 66, 0));
+}
+
+.navbar {
+  background-color: #384B76;
+  height: 42px;
+  -webkit-app-region: drag;
+}
+
+.white-window-option {
+  color: #EBF7FF;
+  -webkit-app-region: no-drag;
+}
+
+.option:hover {
+  color: #FFFFFF;
+}
+
+.option-border:hover {
+  background-color: #0F232E;
+}
+
+.exit:hover {
+  color: #FA5962;
+}
+
+/*
+ * Sidebar
+ */
+.sidebar {
+  position: fixed;
+  top: 45px;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Sidebar navigation */
+.sidebar {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.sidebar .nav {
+  margin-bottom: 20px;
+}
+
+.sidebar .nav-item {
+  width: 100%;
+}
+
+.sidebar .nav-item+.nav-item {
+  margin-left: 0;
+}
+
+.sidebar .nav-link {
+  border-radius: 0;
+}
+
+/*
+ * Dashboard
+ */
+/* Placeholders */
+.placeholders {
+  padding-bottom: 3rem;
+}
+
+.placeholder img {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  background: #EBF7FF;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #384B76;
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: #384B76;
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <script src="../node_modules/feather-icons/dist/feather.min.js"></script>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="../node_modules/@tarekraafat/autocomplete.js/dist/css/autoComplete.css">
+
+  <title>FinTranslation</title>
+</head>
+
+<body>
+  <div>
+    <div class="row frame">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav mr-auto">
+            <a class="navbar-brand" href="#">
+              <img
+                src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn3.iconfinder.com%2Fdata%2Ficons%2Fpersonal-business-finance%2F64%2Fx-01-512.png&f=1"
+                width="30" height="30" class="d-inline-block align-top" alt="">
+              FinTranslation
+            </a>
+          </ul>
+
+          <ul class="nav justify-content-end">
+            <li class="nav-item option-border">
+              <a class="nav-link" id="minimize" href="#"><i data-feather="minimize"
+                  class="white-window-option option"></i></a>
+            </li>
+            <li class="nav-item option-border">
+              <a class="nav-link" id="maximize" href="#"><i data-feather="maximize"
+                  class="white-window-option option"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="exit" href="#"><i data-feather="x-circle"
+                  class="white-window-option exit"></i></a>
+            </li>
+          </ul>
+
+        </div>
+      </nav>
+    </div>
+
+    <div class="container-fluid overflow-hidden">
+      <div class="row">
+
+        <nav id="sidebar" class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+          
+
+        </nav>
+
+        <div role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3 main overflow-auto">
+          
+          <div class="row">
+            <div class="col-sm-9 ml-sm-auto col-md-6">
+              <h1 style="color: #7E7765;">Start the Search</h1>
+            </div>
+            <div class="col-sm-9 ml-sm-auto col-md-6" style="padding-top: 5px;">
+              <select class="form-control custom-select" id="translation">
+              </select>
+            </div>
+          </div>
+          
+          <div class="row m-3">
+            <div class="input-group">
+              <input id="autoComplete" autofocus type="search" class="form-control" placeholder="Search...">
+            </div>
+          </div>
+
+          <div id="autoCompleteResults" class="row">
+          </div>
+          <!--TODO: ability to edit the words or defintion -->
+          <div id="completeResults" class="row m-3">
+            <script id="result" type="x-tmpl-mustache">
+              <h3> {{ wordSelection }}: </h3> &nbsp;&nbsp; <h3 style="color:#C9AD6E"> {{wordResult }} </h3>
+              <div class="col-sm-12 col-md-12 col-lg-12"> 
+                <h4 style="color:#7E7765"> {{ langDefinition }} <em> {{ wordSelection }} </em></h4>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <p>
+                  : {{ wordDefinition }} 
+                </p>
+              </div>
+            </script>
+          </div>
+
+        </div> <!-- main div-->
+
+      </div>
+    </div>
+  </div>
+</body>
+
+<script src="renderer.js"></script>
+<script src="window.js"></script>
+<script src="../node_modules/mustache/mustache.min.js"></script>
+<script src="../node_modules/@tarekraafat/autocomplete.js/dist/js/autoComplete.min.js"></script>
+<script src="translation.js"></script>
+<script src="sidebar.js"></script>
+<script>
+  feather.replace()
+</script>
+
+</html>
