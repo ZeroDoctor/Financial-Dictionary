@@ -1,15 +1,14 @@
-$('#minimize').click(function () {
-    window.minimize();
+let win = require('electron').remote.getCurrentWindow();
+
+document.getElementById('minimize').addEventListener('click', function () {
+    win.minimize();
 });
 
-$('#maximize').click(function () {
-    if (!window.isMaximized()) {
-        window.maximize();
-    } else {
-        window.unmaximize();
-    }
+document.getElementById('maximize').addEventListener('click', function () {
+    if (!win.isMaximized()) win.maximize(); 
+    else win.unmaximize();
 });
 
-$('#exit').click(function () {
-    window.close();
+document.getElementById('exit').addEventListener('click', function () {
+    win.close();
 });

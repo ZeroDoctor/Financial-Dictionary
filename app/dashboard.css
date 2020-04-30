@@ -33,12 +33,22 @@ hr {
 
 .navbar {
   background-color: #384B76;
-  height: 42px;
+  height: 24px;
   -webkit-app-region: drag;
+}
+
+.nav-link {
+  width: 80%;
+  height: 80%;
 }
 
 .white-window-option {
   color: #EBF7FF;
+  -webkit-app-region: no-drag;
+}
+
+.black-window-option {
+  color: #0F232E;
   -webkit-app-region: no-drag;
 }
 
@@ -60,20 +70,23 @@ hr {
 .sidebar {
   position: fixed;
   top: 45px;
+  padding-left: 0px;
+  padding-right: 0px;
   bottom: 0;
   left: 0;
   z-index: 1000;
   padding: 20px;
   overflow-x: hidden;
   overflow-y: auto;
+  display: flex;
+}
+
+.sidebar-item {
+  justify-content: center;
+  cursor: pointer;
 }
 
 /* Sidebar navigation */
-.sidebar {
-  padding-left: 0;
-  padding-right: 0;
-}
-
 .sidebar .nav {
   margin-bottom: 20px;
 }

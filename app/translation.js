@@ -1,49 +1,41 @@
-var lang = "English";
-var lang_tran = "Spanish";
-var select = document.getElementById("translation");
 var template = document.getElementById('result').innerHTML;
+var translation;
+var list;
 
-// for now
-function update_lang() {
-	if (select.selectedIndex == 1) {
-		lang = "Spanish";
-		lang_tran = "English";
-	} else {
-		lang = "English";
-		lang_tran = "Spanish";
-	}
-
-	init_autoComplete();
+Translation.prototype.init = async function(newList) {
+    list = newList;
 }
 
-function update_match(selection) {
-	console.log(selection);
+function Translation() {}
+
+Translation.prototype.update_match = function(selection, langCurr, langTran) {
+    console.log('update match...' + langTran);
     var wordSelection = selection.word;
-    var wordResult = selection.lang[lang_tran];
+    var wordResult = selection.lang[langTran];
     var wordDefinition = selection.defintion;
-	var langDefinition = (lang == "English") ? "Definition of" : "Definicion de";
+    var langDefinition = (langCurr == "English") ? "Definition of" : "Definicion de";
 	
-	console.log(wordSelection + " " + wordResult + " " + wordDefinition + " " + langDefinition);
+    console.log(wordSelection + " " + wordResult + " " + wordDefinition + " " + langDefinition);
 
     var rendered = Mustache.render(template, 
-        { 
-			wordSelection: wordSelection, 
-			wordResult: wordResult, 
-			wordDefinition: wordDefinition, 
-			langDefinition: langDefinition 
-		});
+    {
+		wordSelection: wordSelection, 
+		wordResult: wordResult, 
+		wordDefinition: wordDefinition, 
+		langDefinition: langDefinition 
+	});
 
     $('#completeResults').html(rendered);
 }
 
-function init_autoComplete() {
+Translation.prototype.update_autoComplete = function(langCurr, langTran) {
+    var result = {};
+
     new autoComplete({
         data: { // Data src [Array, Function, Async] | (REQUIRED)
             src: async () => {
                 document.querySelector("#autoComplete").setAttribute("placeholder", "Loading...");
-                const source = await fetch("assets/translation.json");
-                const list = await source.json();
-                return list[lang];
+                return list[langCurr];
             },
             key: ["word"],
             cache: false
@@ -76,25 +68,11 @@ function init_autoComplete() {
             document.querySelector("#autoComplete").value = "";
             document.querySelector("#autoComplete").setAttribute("placeholder", selection);
 
-            update_lang();
-            update_match(feedback.selection.value);
+            result = feedback.selection.value;
+            translation.update_match(result, langCurr, langTran);
         }
     });
 }
 
-
-
-window.onload = function () {
-
-    // we can make a file of different languages later
-    var option = document.createElement('option');
-    option.text = "English to Spanish";
-    select.add(option, 0);
-
-    var option = document.createElement('option');
-    option.text = "Spanish to English";
-	select.add(option, 1);
-	
-	document.getElementById("translation").addEventListener('change', update_lang);
-	init_autoComplete();
-}
+translation = new Translation();
+exports.translation = translation;
