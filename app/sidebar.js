@@ -1,6 +1,7 @@
 var divSidebar = document.getElementById('sidebar');
 var sidebarStr = '';
 var sidebarSize = 24;
+var langCurr;
 var sidebar;
 var list;
 
@@ -14,14 +15,15 @@ function Sidebar() {}
 Sidebar.prototype.check_sidebar = function(event) {
     if((divSidebar.scrollHeight - divSidebar.scrollTop) < divSidebar.clientHeight + 1) {
         sidebarSize += 16;
-        divSidebar.scrollTo(divSidebar.scrollTop);
+        divSidebar.scrollTo(0, divSidebar.scrollTop);
         sidebar.update_sidebar();
     }
 
 }
 
-Sidebar.prototype.update_sidebar = function(langCurr) {
+Sidebar.prototype.update_sidebar = function(lang) {
     console.log("update sidebar...");
+    if(lang != null) langCurr = lang;
     sidebarStr = '';
 
     var temp;
